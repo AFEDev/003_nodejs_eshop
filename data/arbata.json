@@ -1,0 +1,11 @@
+{
+"name": "Arbata",
+"price": {
+    "value": 2.00,
+    "currency": "Eur"
+},
+"inStock": 20,
+"sold": 33
+}
+
+
