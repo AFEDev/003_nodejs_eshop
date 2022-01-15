@@ -52,6 +52,14 @@ const futureProfit = require("./lib/futureProfit.js");
   //- galimu pardavimu: [total pinigu] [valiuta]
 
   futureProfit(prekiuInfo);
+
+  //- maksimali galima parduotuves apyvarta: [total pinigu] [valiuta]
+
+  console.log(
+    `maksimali galima parduotuves apyvarta ${
+      profit(prekiuInfo) + futureProfit(prekiuInfo)
+    } ${prekiuInfo[0].price.currency}`
+  );
 })();
 
 /*
