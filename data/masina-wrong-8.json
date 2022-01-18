@@ -5,5 +5,5 @@
         "currency": "Eur"
     },
     "inStock": 3,
-    "sold": 10
+    "sold": true
 }

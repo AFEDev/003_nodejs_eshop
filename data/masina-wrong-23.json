@@ -4,6 +4,6 @@
         "value": 100.00,
         "currency": "Eur"
     },
-    "inStock": 3,
-    "sold": 10
+    "inStock": "Infinity",
+    "sold": 3
 }

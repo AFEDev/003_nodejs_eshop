@@ -1,11 +1,9 @@
 {
-"name": "Arbata",
-"price": {
-    "value": 2.00,
-    "currency": "Eur"
-},
-"inStock": 20,
-"sold": 33
+    "name": "Juoda arbata",
+    "price": {
+        "value": 2.22,
+        "currency": "Eur"
+    },
+    "inStock": 10,
+    "sold": 20
 }
-
-

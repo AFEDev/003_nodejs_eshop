@@ -11,32 +11,95 @@ const printList = require("./lib/printList.js");
 const profit = require("./lib/profit.js");
 const soldTotalCount = require("./lib/soldTotalCount.js");
 const futureProfit = require("./lib/futureProfit.js");
+const IsValid = require("./lib/IsValid");
 
 (async () => {
-  const prekes = ["arbata", "kvepalai", "masina", "kebabas"];
+  const prekes = [
+    "arbata",
+    "arba",
+    "kvepalai",
+    "masina",
+    "masina-wrong-1",
+    "masina-wrong-2",
+    "masina-wrong-3",
+    "masina-wrong-4",
+    "masina-wrong-5",
+    "masina-wrong-6",
+    "masina-wrong-7",
+    "masina-wrong-8",
+    "masina-wrong-9",
+    "masina-wrong-10",
+    "masina-wrong-11",
+    "masina-wrong-12",
+    "masina-wrong-13",
+    "masina-wrong-14",
+    "masina-wrong-15",
+    "masina-wrong-16",
+    "masina-wrong-17",
+    "masina-wrong-18",
+    "masina-wrong-19",
+    "masina-wrong-20",
+    "masina-wrong-21",
+    "masina-wrong-22",
+    "masina-wrong-23",
+    "masina-wrong-24",
+    "masina-wrong-25",
+    "masina-wrong-26",
+    "masina-wrong-27",
+    "masina-wrong-28",
+    "masina-wrong-29",
+    "masina-wrong-30",
+    "pomidoras",
+    "",
+    5,
+    true,
+    false,
+    null,
+    () => {},
+    [],
+    {},
+    undefined,
+  ];
   const prekiuInfo = [];
+  const availableCurrency = ["Eur", "Usd", "Lit"];
 
+  // -----------------------------------------------------
   for (const preke of prekes) {
-    const content = await readFile(preke);
-
-    if (typeof content === "string") {
-      if (jsonParse(content)[0] !== true) {
-        prekiuInfo.push(jsonParse(content)[1]);
-      } else {
-        console.log("Klaida parsinant:", preke);
-      }
-    } else {
-      console.log("Failas neegzistuoja:", preke);
+    if (typeof preke !== "string" || preke === "") {
+      continue;
     }
+    const itemText = await readFile(preke);
+    if (typeof itemText !== "string" || itemText === "") {
+      continue;
+    }
+    const itemObj = jsonParse(itemText);
+    if (itemObj === false) {
+      continue;
+    }
+
+    const { name, price, inStock, sold } = itemObj;
+    if (
+      !IsValid.correctObject(itemObj, 4) ||
+      !IsValid.nonEmptyString(name) ||
+      !IsValid.correctObject(price, 2) ||
+      !IsValid.nonNegativeNumber(price.value) ||
+      !IsValid.nonEmptyString(price.currency) ||
+      !availableCurrency.includes(price.currency) ||
+      !IsValid.nonNegativeInteger(inStock) ||
+      !IsValid.nonNegativeInteger(sold)
+    ) {
+      continue;
+    }
+    prekiuInfo.push(itemObj);
   }
 
   //- susideti visus produktus i viena bendra masyva;
 
-  console.table(prekiuInfo);
+  //console.table(prekiuInfo);
 
   //- isspausdinti produktu lentele, kuri atordys taip (zr. zemiau)
 
-  printList(prekiuInfo);
+  console.log(printList(prekiuInfo));
 
   //- turimu prekiu sandelyje: [total kiekis]
 
@@ -56,7 +119,7 @@ const futureProfit = require("./lib/futureProfit.js");
   //- maksimali galima parduotuves apyvarta: [total pinigu] [valiuta]
 
   console.log(
-    `maksimali galima parduotuves apyvarta ${
+    `Maksimali galima parduotuves apyvarta ${
       profit(prekiuInfo) + futureProfit(prekiuInfo)
     } ${prekiuInfo[0].price.currency}`
   );
@@ -80,3 +143,9 @@ Parduotuves suvestine:
 - galimu pardavimu: [total pinigu] [valiuta]
 - maksimalus galima parduotuves apyvarta: [total pinigu] [valiuta]
 */
+
+let labas = "balamutas";
+
+console.log(labas.length);
+
+console.log(Array.isArray(labas));

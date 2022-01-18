@@ -1,0 +1,9 @@
+{
+    "name": "Rubliai",
+    "price": {
+        "value": 100.00,
+        "currency": "Rub"
+    },
+    "inStock": 10,
+    "sold": 3
+}

@@ -1,0 +1,8 @@
+{
+    "name": "Keturrate masina Rub",
+    "price": {
+        "value": 100.00,
+        "currency": "Rub"
+    },
+    "inStock": 3
+}
